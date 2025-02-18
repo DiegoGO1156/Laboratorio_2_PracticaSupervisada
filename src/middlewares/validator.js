@@ -11,3 +11,10 @@ export const registerValidator = [
     body("password","La contraseña debe de tener un minimo de 8 caracteres").isLength({min: 8}),
     validarCampos
 ]
+
+export const loginValidator = [
+    body("email").optional().isEmail().withMessage("Ingresa una dirección de correo valida"),
+    body("name").optional().isString().withMessage("Ingresa un username valido"),
+    body("password", "La contraseña debe tener minimo 8 caracteres").isLength({min: 8}),
+    validarCampos
+]

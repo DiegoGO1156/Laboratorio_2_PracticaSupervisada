@@ -1,14 +1,26 @@
 import { Router } from "express";
-import { register } from "./auth.controller.js";
-import { registerValidator } from "../middlewares/validator.js";
+import { login, registerTeacher, registerUser } from "./auth.controller.js";
+import { loginValidator, registerValidator } from "../middlewares/validator.js";
 
 
 const router = Router()
 
 router.post(
-    "/register",
-    registerValidator,
-    register
+    "/register/User",
+    registerUser,
+    registerValidator
+)
+
+router.post(
+    "/register/Teacher",
+    registerTeacher,
+    registerValidator
+)
+
+router.post(
+    "/login",
+    login,
+    loginValidator
 )
 
 export default router

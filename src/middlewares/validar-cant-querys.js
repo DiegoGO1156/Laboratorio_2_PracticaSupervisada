@@ -8,3 +8,5 @@ export const limiter = rateLimit({
         msg: "DEMASIADAS PETICIONES REALIZADAS DESDE LA MISMA IP, Intentenuevamente en 15 minutos"
     }
 })
+
+export default limiter;
