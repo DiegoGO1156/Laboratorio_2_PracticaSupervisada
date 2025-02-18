@@ -54,6 +54,9 @@ export const registerTeacher = async (req, res) =>{
                 msg: "El único role admitido es TEACHER_ROLE"
             })
         }
+        if(!role){
+            role = "TEACHER_ROLE"
+        }
 
         const user = await User.create({
             name: data.name,

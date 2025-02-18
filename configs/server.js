@@ -4,6 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import { dbConection } from "./mongo.js";
 import authRoutes from "../src/auth/auth.routes.js"
+import cursoRoutes  from "../src/cursos/cursoRouter.js";
 import {limiter} from "../src/middlewares/validar-cant-querys.js"
 
 const middlewares = (app) =>{
@@ -17,6 +18,7 @@ const middlewares = (app) =>{
 
 const routes = (app) =>{
     app.use("/administrador_Colegio/v1/auth", authRoutes)
+    app.use("/administrador_Colegio/v1/Curso", cursoRoutes)
 }
 
 const conectDB = async() =>{

@@ -1,0 +1,16 @@
+import User from "../users/user.model.js";
+
+export const validarMaestro = async (req, res, next) => {
+    try {
+        const { user } = req.body; // ID del usuario
+
+        const maestro = await User.findById(user);
+        if (!maestro || maestro.role !== "TEACHER_ROLE") {
+            return res.status(403).json({ msg: "Acceso denegado, solo maestros pueden realizar esta acción." });
+        }
+
+        next(); // Si es maestro, continúa con la solicitud
+    } catch (error) {
+        res.status(500).json({ msg: "Error en la validación", error });
+    }
+};
